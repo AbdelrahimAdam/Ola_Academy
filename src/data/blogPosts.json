@@ -1,0 +1,22 @@
+[
+  {
+    "title": "blog_post1_title",
+    "content": "blog_post1_content",
+    "date": "2025-09-01"
+  },
+  {
+    "title": "blog_post2_title",
+    "content": "blog_post2_content",
+    "date": "2025-09-10"
+  },
+  {
+    "title": "blog_post3_title",
+    "content": "blog_post3_content",
+    "date": "2025-09-18"
+  },
+  {
+    "title": "blog_post4_title",
+    "content": "blog_post4_content",
+    "date": "2025-09-25"
+  }
+]
