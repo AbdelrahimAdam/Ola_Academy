@@ -64,30 +64,27 @@ const Navbar = () => {
             <img
               src="/logo.jpg"
               alt="El Ola Academy Logo"
-              className="relative w-12 h-12 md:w-14 md:h-14 rounded-full object-cover shadow-2xl border-2 border-white/50 dark:border-gray-600/50"
+              className="relative w-10 h-10 md:w-12 md:h-12 rounded-full object-cover shadow-2xl border-2 border-white/50 dark:border-gray-600/50"
             />
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/30 to-transparent mix-blend-overlay"></div>
           </motion.div>
 
-          {/* Enhanced Title with Premium Styling */}
+          {/* Simplified Single Line Title */}
           <motion.div
             initial={{ opacity: 0, x: isArabic ? 20 : -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="flex flex-col"
           >
             <span className={`
-              text-xl md:text-2xl font-bold 
+              text-lg md:text-xl font-bold 
               bg-gradient-to-br from-blue-600 via-purple-600 to-cyan-600 
               dark:from-blue-400 dark:via-purple-400 dark:to-cyan-400
               bg-clip-text text-transparent
-              drop-shadow-lg
+              drop-shadow-md
+              whitespace-nowrap
               ${isArabic ? 'font-["Noto_Sans_Arabic"]' : "font-['Poppins']"}
               tracking-tight
             `}>
               {t("academy_name")}
-            </span>
-            <span className="text-xs text-gray-600 dark:text-gray-400 font-medium tracking-wide">
-              {t("academy_tagline", { defaultValue: "Excellence in Education" })}
             </span>
           </motion.div>
         </Link>
