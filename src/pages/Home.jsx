@@ -123,11 +123,82 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>
-          {t("academy_name")} - {t("home")}
-        </title>
-        <meta name="description" content={t("hero_description")} />
-      </Helmet>
+  {/* Dynamic Title & Description */}
+  <title>
+    {isArabic
+      ? "أكاديمية العُلا | دورات أونلاين في اللغة الإنجليزية، IELTS، الأعمال، والترجمة الطبية"
+      : "Al-Ola Academy | Online English, IELTS, Business & Medical Translation Courses"}
+  </title>
+
+  <meta
+    name="description"
+    content={
+      isArabic
+        ? "انضم إلى أكاديمية العُلا لتعلّم اللغة الإنجليزية أونلاين باحترافية. نقدم دورات IELTS، الإنجليزية للأطفال، الإنجليزية العامة، الإنجليزية للأعمال، والترجمة الطبية مع مدربين معتمدين."
+        : "Join Al-Ola Academy for professional online English training. We offer IELTS preparation, English for kids, General English, Business English, and Medical Translation English with certified instructors."
+    }
+  />
+
+  {/* Language & Direction */}
+  <html lang={isArabic ? "ar" : "en"} dir={isArabic ? "rtl" : "ltr"} />
+
+  {/* Alternate Language Versions */}
+  <link rel="alternate" hrefLang="en" href="https://ola-academy.vercel.app/en" />
+  <link rel="alternate" hrefLang="ar" href="https://ola-academy.vercel.app/ar" />
+  <link rel="alternate" hrefLang="x-default" href="https://ola-academy.vercel.app/" />
+
+  {/* Keywords */}
+  <meta
+    name="keywords"
+    content={
+      isArabic
+        ? "أكاديمية العُلا, دورات إنجليزية أونلاين, تعلم الإنجليزية للأطفال, IELTS أونلاين, الإنجليزية العامة, الإنجليزية للأعمال, الإنجليزية الطبية, ترجمة طبية, أكاديمية اللغة الإنجليزية"
+        : "Al Ola Academy, online English courses, IELTS training, English for kids, general English, business English, medical English, medical translation, online English academy"
+    }
+  />
+
+  {/* Open Graph (Facebook / WhatsApp Preview) */}
+  <meta
+    property="og:title"
+    content={
+      isArabic
+        ? "أكاديمية العُلا | الأفضل لتعلّم الإنجليزية أونلاين"
+        : "Al-Ola Academy | The Best Online English Learning Platform"
+    }
+  />
+  <meta
+    property="og:description"
+    content={
+      isArabic
+        ? "دورات معتمدة في IELTS والإنجليزية للأطفال والعامة والأعمال والترجمة الطبية، من أي مكان في العالم."
+        : "Certified online courses in IELTS, English for Kids, General English, Business English, and Medical Translation — from anywhere in the world."
+    }
+  />
+  <meta property="og:url" content="https://ola-academy.vercel.app/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://ola-academy.vercel.app/logo.jpg" />
+
+  {/* Twitter Card */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content={
+      isArabic
+        ? "أكاديمية العُلا لتعلّم الإنجليزية أونلاين"
+        : "Al-Ola Academy for Online English Learning"
+    }
+  />
+  <meta
+    name="twitter:description"
+    content={
+      isArabic
+        ? "IELTS | الإنجليزية للأطفال | الإنجليزية العامة | الإنجليزية للأعمال | الترجمة الطبية"
+        : "IELTS | English for Kids | General English | Business English | Medical Translation"
+    }
+  />
+  <meta name="twitter:image" content="https://ola-academy.vercel.app/logo.jpg" />
+</Helmet>
+
 
       {/* ======= Main Content Wrapper ======= */}
       <main className="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
