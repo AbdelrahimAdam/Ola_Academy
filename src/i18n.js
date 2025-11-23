@@ -1,22 +1,56 @@
 // src/i18n.js
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
 
-import en from './locales/en.json';
-import ar from './locales/ar.json';
+// استيراد ملفات الترجمة
+import en from "./locales/en.json";
+import ar from "./locales/ar.json";
+
+const resources = {
+  en: {
+    translation: en,
+  },
+  ar: {
+    translation: ar,
+  },
+};
 
 i18n
+  // كشف اللغة تلقائيًا (من المتصفح أو localStorage)
+  .use(LanguageDetector)
+  // تمرير i18n إلى react-i18next
   .use(initReactI18next)
   .init({
-    resources: {
-      en: { translation: en },
-      ar: { translation: ar },
+    resources,
+    fallbackLng: "en",
+    supportedLngs: ["en", "ar"], // اللغات المدعومة فقط
+    debug: process.env.NODE_ENV === "development", // Debug في التطوير بس
+
+    // إعدادات كشف اللغة (الأولوية)
+    detection: {
+      order: ["localStorage", "navigator", "htmlTag"],
+      lookupLocalStorage: "i18nextLng",
+      caches: ["localStorage"], // يحفظ اختيار المستخدم
     },
-    lng: 'en',
-    fallbackLng: 'en',
+
     interpolation: {
-      escapeValue: false,
+      escapeValue: false, // React يحمي من XSS بالفعل
     },
+
+    react: {
+      useSuspense: false, // مهم لو مش مستخدم Suspense
+    },
+
+    // تحسين الأداء في الإنتاج
+    saveMissing: false,
+    missingKeyHandler: false,
   });
+
+// تغيير اتجاه النص (RTL/LTR) تلقائيًا عند تغيير اللغة
+i18n.on("languageChanged", (lng) => {
+  document.documentElement.dir = lng === "ar" ? "rtl" : "ltr";
+  document.documentElement.lang = lng;
+});
 
 export default i18n;

@@ -1,155 +1,155 @@
 // src/pages/Contact.jsx
-import { useForm } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
-import { Helmet } from 'react-helmet-async';
-import Card from '../components/Card';
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
+import { FaWhatsapp, FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaHeart } from "react-icons/fa";
 
 const Contact = () => {
-  const { t } = useTranslation();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-    reset,
-  } = useForm({
-    defaultValues: { name: '', email: '', message: '' },
-  });
+  const { t, i18n } = useTranslation();
+  const isArabic = i18n.language === "ar";
 
-  const onSubmit = async (data) => {
-    try {
-      const response = await fetch('https://formspree.io/f/xnngdgjq', {  // Replace with your form ID
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-      if (response.ok) {
-        alert(t('contact_success', { defaultValue: 'Thank you! Your message has been sent successfully. Our student services will contact you soon.' }));
-        reset();
-      } else {
-        throw new Error(t('contact_error', { defaultValue: 'Failed to send message. Please try again later.' }));
-      }
-    } catch (error) {
-      alert(error.message || t('contact_error'));
-    }
+  // أرقام الواتساب حسب الدولة (غيّرها بالأرقام الحقيقية)
+  const whatsappNumbers = {
+    egypt: "201234567890",
+    sudan: "249912345678",
+    ksa: "966501234567",
+  };
+
+  const openWhatsApp = (country = "egypt") => {
+    const number = whatsappNumbers[country];
+    const message = isArabic
+      ? `مرحبًا هبة ناتشورالز\nأريد التواصل معاكم بخصوص المنتجات والطلبات`
+      : `Hi Heba Naturals\nI want to inquire about your products and place an order`;
+    window.open(`https://wa.me/${number}?text=${encodeURIComponent(message)}`, "_blank");
   };
 
   return (
     <>
       <Helmet>
-        <title>{t('academy_name')} - {t('contact')}</title>
-        <meta name="description" content={t('contact_description', { defaultValue: 'Get in touch with El Ola Academy for inquiries and support.' })} />
-        <meta property="og:title" content={`${t('academy_name')} - ${t('contact')}`} />
-        <meta property="og:description" content={t('contact_description', { defaultValue: 'Get in touch with El Ola Academy for inquiries and support.' })} />
-        <meta property="og:image" content="https://via.placeholder.com/1200x400?text=El+Ola+Academy+Contact" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${t('academy_name')} - ${t('contact')}`} />
-        <meta name="twitter:description" content={t('contact_description', { defaultValue: 'Get in touch with El Ola Academy for inquiries and support.' })} />
-        <meta name="twitter:image" content="https://via.placeholder.com/1200x400?text=El+Ola+Academy+Contact" />
+        <title>{t("contact.meta_title")}</title>
+        <meta name="description" content={t("contact.meta_description")} />
+        <meta property="og:title" content={t("contact.meta_title")} />
+        <meta property="og:description" content={t("contact.meta_description")} />
+        <meta property="og:image" content="/img/og-contact.jpg" />
       </Helmet>
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="py-12 bg-gray-50 dark:bg-gray-900 transition-colors duration-300"
-      >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h1
-            initial={{ y: -20 }}
-            animate={{ y: 0 }}
-            className="text-3xl sm:text-4xl font-bold text-center mb-8 text-gray-900 dark:text-white font-serif"
+
+      <main className="min-h-screen bg-gradient-to-b from-emerald-50 via-white to-green-50 dark:from-gray-900 dark:via-black dark:to-emerald-950 py-20 px-4">
+        <div className="container mx-auto max-w-6xl">
+          {/* Hero */}
+          <motion.div
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            className="text-center mb-16"
           >
-            {t('contact_title')}
-          </motion.h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10">
-            <Card className="p-6 bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-shadow duration-300">
-              <form
-                action="https://formspree.io/f/xyznwlpo"  // Replace with your form ID
-                method="POST"
-                onSubmit={handleSubmit(onSubmit)}
-                className="space-y-4"
-                aria-label={t('contact_form_label', { defaultValue: 'Contact Form' })}
+            <h1 className="text-5xl md:text-7xl font-bold text-emerald-800 dark:text-emerald-400 mb-6">
+              {t("contact.hero_title")}
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
+              {t("contact.hero_subtitle")}
+            </p>
+          </motion.div>
+
+          {/* Contact Methods Grid */}
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            {/* Egypt */}
+            <motion.div
+              whileHover={{ y: -10 }}
+              className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 text-center border border-emerald-100 dark:border-emerald-800"
+            >
+              <div className="w-20 h-20 mx-auto mb-6 bg-emerald-100 dark:bg-emerald-900 rounded-full flex items-center justify-center">
+                <img src="/img/flags/egypt.png" alt="Egypt" className="w-12 h-12 rounded-full" />
+              </div>
+              <h3 className="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4">
+                {t("contact.egypt")}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-6">{t("contact.available_24_7")}</p>
+              <button
+                onClick={() => openWhatsApp("egypt")}
+                className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-5 rounded-2xl flex items-center justify-center gap-3 transform hover:scale-105 transition-all shadow-xl"
               >
-                <div>
-                  <input
-                    {...register('name', { required: t('contact_required', { defaultValue: 'This field is required' }) })}
-                    name="name"
-                    placeholder={t('contact_form_name')}
-                    className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white transition-colors duration-300"
-                    aria-invalid={errors.name ? 'true' : 'false'}
-                    aria-describedby="name-error"
-                  />
-                  {errors.name && <p id="name-error" className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
-                </div>
-                <div>
-                  <input
-                    {...register('email', {
-                      required: t('contact_required'),
-                      pattern: {
-                        value: /\S+@\S+\.\S+/,
-                        message: t('contact_invalid_email', { defaultValue: 'Please enter a valid email address' }),
-                      },
-                    })}
-                    name="email"
-                    placeholder={t('contact_form_email')}
-                    type="email"
-                    className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white transition-colors duration-300"
-                    aria-invalid={errors.email ? 'true' : 'false'}
-                    aria-describedby="email-error"
-                  />
-                  {errors.email && <p id="email-error" className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
-                </div>
-                <div>
-                  <textarea
-                    {...register('message', { required: t('contact_required') })}
-                    name="message"
-                    placeholder={t('contact_form_message')}
-                    className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white transition-colors duration-300 h-32 resize-none"
-                    aria-invalid={errors.message ? 'true' : 'false'}
-                    aria-describedby="message-error"
-                  />
-                  {errors.message && <p id="message-error" className="text-red-500 text-sm mt-1">{errors.message.message}</p>}
-                </div>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="bg-primary text-white px-6 py-3 rounded-lg w-full hover:bg-indigo-700 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? t('contact_submitting', { defaultValue: 'Submitting...' }) : t('contact_submit')}
-                </button>
-              </form>
-            </Card>
-            <Card className="p-6 bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between">
-              <div>
-                <p className="text-gray-900 dark:text-gray-200 font-semibold text-lg mb-2">Phone: +249924357822</p>
-                <p className="text-gray-900 dark:text-gray-200 font-semibold text-lg mb-4">Email: ola.academy1212@gmail.com</p>
-                <a
-                  href="https://wa.me/249924357822"
-                  className="text-primary dark:text-indigo-400 hover:underline font-semibold text-lg"
-                >
-                  {t('contact_whatsapp')}
-                </a>
+                <FaWhatsapp size={28} />
+                {t("contact.chat_whatsapp")}
+              </button>
+            </motion.div>
+
+            {/* Sudan */}
+            <motion.div
+              whileHover={{ y: -10 }}
+              className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 text-center border border-emerald-100 dark:border-emerald-800"
+            >
+              <div className="w-20 h-20 mx-auto mb-6 bg-emerald-100 dark:bg-emerald-900 rounded-full flex items-center justify-center">
+                <img src="/img/flags/sudan.png" alt="Sudan" className="w-12 h-12 rounded-full" />
               </div>
-              <div className="mt-6">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=your-actual-embed-code-here"
-                  width="100%"
-                  height="300"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  title={t('contact_map', { defaultValue: 'Academy Location Map' })}
-                  className="rounded-lg"
-                  onError={() => console.log('Map iframe failed to load')}
-                ></iframe>
+              <h3 className="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4">
+                {t("contact.sudan")}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-6">{t("contact.available_24_7")}</p>
+              <button
+                onClick={() => openWhatsApp("sudan")}
+                className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-5 rounded-2xl flex items-center justify-center gap-3 transform hover:scale-105 transition-all shadow-xl"
+              >
+                <FaWhatsapp size={28} />
+                {t("contact.chat_whatsapp")}
+              </button>
+            </motion.div>
+
+            {/* Saudi Arabia */}
+            <motion.div
+              whileHover={{ y: -10 }}
+              className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 text-center border border-emerald-100 dark:border-emerald-800"
+            >
+              <div className="w-20 h-20 mx-auto mb-6 bg-emerald-100 dark:bg-emerald-900 rounded-full flex items-center justify-center">
+                <img src="/img/flags/saudi.png" alt="Saudi Arabia" className="w-12 h-12 rounded-full" />
               </div>
-            </Card>
+              <h3 className="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4">
+                {t("contact.ksa")}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-6">{t("contact.available_24_7")}</p>
+              <button
+                onClick={() => openWhatsApp("ksa")}
+                className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-5 rounded-2xl flex items-center justify-center gap-3 transform hover:scale-105 transition-all shadow-xl"
+              >
+                <FaWhatsapp size={28} />
+                {t("contact.chat_whatsapp")}
+              </button>
+            </motion.div>
+          </div>
+
+          {/* Main CTA */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="text-center py-16 bg-gradient-to-r from-emerald-600 to-green-600 rounded-3xl shadow-2xl"
+          >
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-8">
+              <FaHeart className="inline-block mr-4 text-rose-300" />
+              {t("contact.main_cta_title")}
+            </h2>
+            <p className="text-xl md:text-2xl text-emerald-50 mb-10 max-w-3xl mx-auto px-6">
+              {t("contact.main_cta_subtitle")}
+            </p>
+            <button
+              onClick={() => openWhatsApp("egypt")}
+              className="bg-white text-emerald-700 hover:bg-emerald-50 font-bold text-2xl px-16 py-7 rounded-full shadow-2xl transform hover:scale-110 transition-all inline-flex items-center gap-4"
+            >
+              <FaWhatsapp size={40} className="text-green-600" />
+              {t("contact.main_cta_button")}
+            </button>
+          </motion.div>
+
+          {/* Working Hours */}
+          <div className="mt-16 text-center">
+            <p className="text-2xl font-bold text-emerald-800 dark:text-emerald-400 flex items-center justify-center gap-3">
+              <FaClock className="text-emerald-600" />
+              {t("contact.working_hours")}
+            </p>
+            <p className="text-lg text-gray-600 dark:text-gray-400 mt-3">
+              {t("contact.working_hours_detail")}
+            </p>
           </div>
         </div>
-      </motion.section>
+      </main>
     </>
   );
 };

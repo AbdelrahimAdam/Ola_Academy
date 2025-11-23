@@ -1,43 +1,129 @@
-<!doctype html>
-<html lang="en" class="dark"> <!-- 👈 Add or remove 'dark' dynamically via JS -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>El Ola Academy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    
+    <!-- العنوان الرسمي الجديد -->
+    <title>هبة ناتشورالز | منتجات علاجية طبيعية بإشراف الدكتورة هبة مهاجر</title>
 
-    <!-- Favicon / Logo -->
-    <link rel="icon" href="/logo.jpg" type="image/jpeg" />
-    <link rel="apple-touch-icon" href="/logo.jpg" />
-    <link rel="icon" sizes="32x32" href="/logo.jpg" />
-    <link rel="icon" sizes="192x192" href="/logo.jpg" />
+    <!-- Favicon & Icons -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/img/logo.png" type="image/png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- Meta tags for SEO -->
+    <!-- أفضل خطوط عربية في العالم (تدعم النقط والتشكيل 100%) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=El+Messiri:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Primary Meta Tags (محدثة بالكامل) -->
     <meta
       name="description"
-      content="El Ola Academy - Learn, Grow, and Achieve excellence through quality courses and exams."
+      content="هبة ناتشورالز – منتجات علاجية طبيعية 100% للشعر الأفريقي والمجعد من أجود الأعشاب الأيورفيدية والسودانية بإشراف الدكتورة هبة مهاجر – نتائج مضمونة من الأسبوع الثالث"
     />
     <meta
       name="keywords"
-      content="El Ola Academy, courses, exams, education, registration"
+      content="هبة ناتشورالز, الدكتورة هبة مهاجر, منتجات علاجية طبيعية, زيت الثعلبة, تطويل الشعر, الكركار السوداني, حنة علاجية, شعر أفريقي, شعر مجعد, أيورفيدا, Heba Naturals"
     />
-    <meta name="author" content="El Ola Academy" />
+    <meta name="author" content="الدكتورة هبة مهاجر - Heba Naturals" />
+    <meta name="theme-color" content="#065f46" />
 
-    <!-- Open Graph / Social Sharing -->
-    <meta property="og:title" content="El Ola Academy" />
-    <meta
-      property="og:description"
-      content="Join El Ola Academy and explore our courses and exams platform."
-    />
+    <!-- Open Graph / WhatsApp / Facebook -->
+    <meta property="og:title" content="هبة ناتشورالز | منتجات علاجية طبيعية بإشراف الدكتورة هبة مهاجر" />
+    <meta property="og:description" content="منتجات علاجية طبيعية 100% من أجود الأعشاب الأيورفيدية والسودانية – نتائج مرئية من الأسبوع الثالث – بإشراف الدكتورة هبة مهاجر" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://elolaacademy.com/" />
-    <meta property="og:image" content="/logo.jpg" />
+    <meta property="og:url" content="https://hebanaturals.com" />
+    <meta property="og:image" content="https://hebanaturals.com/img/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Heba Naturals" />
+    <meta property="og:locale" content="ar_EG" />
 
-    <!-- Tailwind already injected via Vite build -->
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="هبة ناتشورالز – منتجات علاجية طبيعية بإشراف الدكتورة هبة مهاجر" />
+    <meta name="twitter:description" content="زيوت وخلطات طبيعية 100% لتطويل الشعر وعلاج الثعلبة والفراغات – بإشراف الدكتورة هبة مهاجر" />
+    <meta name="twitter:image" content="https://hebanaturals.com/img/og-image.jpg" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://hebanaturals.com" />
+    <link rel="alternate" hreflang="ar" href="https://hebanaturals.com" />
+    <link rel="alternate" hreflang="en" href="https://hebanaturals.com/en" />
+    <link rel="alternate" hreflang="x-default" href="https://hebanaturals.com" />
+
+    <!-- Structured Data (محدثة بالاسم الجديد) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Heba Naturals",
+        "alternateName": "هبة ناتشورالز",
+        "url": "https://hebanaturals.com",
+        "logo": "https://hebanaturals.com/img/logo.png",
+        "description": "علامة تجارية متخصصة في المنتجات العلاجية الطبيعية للشعر الأفريقي والمجعد بإشراف الدكتورة هبة مهاجر",
+        "founder": { "@type": "Person", "name": "الدكتورة هبة مهاجر" },
+        "sameAs": [
+          "https://instagram.com/hebanaturals",
+          "https://facebook.com/hebanaturals",
+          "https://wa.me/201234567890"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "خدمة العملاء",
+          "telephone": "+201234567890",
+          "areaServed": ["EG", "SD", "SA"],
+          "availableLanguage": ["Arabic", "English"]
+        }
+      }
+    </script>
+
+    <!-- تحسين الأداء والخطوط -->
+    <style>
+      :root {
+        --primary: #065f46;
+        --emerald-600: #059669;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: 'Cairo', 'El Messiri', 'Noto Sans Arabic', system-ui, sans-serif !important;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background: linear-gradient(to bottom, #ecfdf5, #ffffff);
+      }
+      #root { min-height: 100vh; }
+      .arabic { font-family: 'Cairo', 'El Messiri', sans-serif !important; }
+    </style>
   </head>
-  <body
-    class="bg-background text-text dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300"
-  >
+
+  <body class="bg-gradient-to-b from-emerald-50 to-white dark:from-emerald-950 dark:to-black text-gray-800 dark:text-gray-100 antialiased transition-colors duration-500">
+
     <div id="root"></div>
+
+    <!-- زر واتساب عائم فاخر جدًا -->
+    <a
+      href="https://wa.me/201234567890?text=مرحبًا%20دكتورة%20هبة%20🌿%0Aأريد%20الاستفسار%20عن%20المنتجات%20العلاجية..."
+      target="_blank"
+      rel="noopener noreferrer"
+      class="fixed bottom-5 left-5 sm:bottom-8 sm:left-8 z-50 group"
+      aria-label="تواصلي مع الدكتورة هبة على واتساب"
+    >
+      <div class="relative">
+        <div class="absolute inset-0 bg-green-400 rounded-full blur-2xl scale-150 animate-ping opacity-70"></div>
+        <div class="relative bg-gradient-to-br from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 p-5 rounded-full shadow-2xl transform hover:scale-125 transition-all duration-500 border-4 border-white/40 backdrop-blur-md">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 sm:w-12 sm:h-12 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.57-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 5.44h-.005c-1.914-.001-3.793-.689-5.452-1.973l-.391-.235-3.873.998 1.017-3.726-.24-.376c-1.376-1.698-2.101-3.8-2.1-5.936.001-6.038 4.921-10.957 10.97-10.957 2.925.001 5.685 1.142 7.752 3.218 2.067 2.075 3.207 4.834 3.206 7.758-.001 6.039-4.92 10.958-10.97 10.958"/>
+            <path d="M12.054 2.25C6.077 2.25 1.25 7.077 1.25 13.054c0 2.135.584 4.217 1.693 6.014l-1.13 4.138 4.248-1.105c1.75 1.047 3.75 1.647 5.893 1.647 5.977 0 10.804-4.827 10.804-10.804C22.858 7.077 18.031 2.25 12.054 2.25z"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

@@ -1,0 +1,21 @@
+{
+  "name": "هبة ناتشورالز - Heba Naturals",
+  "short_name": "Heba Naturals",
+  "description": "زيوت وخلطات أيورفيدية طبيعية 100% من مواهب مهاجر",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#10b981",
+  "icons": [
+    {
+      "src": "/img/logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/img/logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
