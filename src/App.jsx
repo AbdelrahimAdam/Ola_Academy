@@ -1,4 +1,4 @@
- // src/App.jsx
+  src/App.jsx
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import MainLayout from "./layouts/MainLayout";
